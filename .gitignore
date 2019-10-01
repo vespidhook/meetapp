@@ -1,0 +1,13 @@
+.DS_Store
+node_modules
+
+coverage
+
+tmp/uploads/*
+
+!tmp/uploads/.gitkeep
+!tmp/uploads/example
+
+dist
+api/__tests__/database.sqlite
+api/temp/uploads/*
