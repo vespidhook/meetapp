@@ -53,7 +53,7 @@ $ cd meetapp-gostack/mobile
 #### Instalar dependências
 $ yarn
 
-#### Executando frontend
+#### Executando mobile
 $ react-native run-android
 
 
