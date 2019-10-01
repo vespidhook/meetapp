@@ -45,7 +45,7 @@ $ yarn
 #### Executando frontend
 $ yarn start
 
-## Instalando o backend
+## Instalando o mobile (testado somente no android)
 
 #### Vá para o diretorio 
 $ cd meetapp-gostack/mobile
@@ -55,6 +55,8 @@ $ yarn
 
 #### Executando frontend
 $ react-native run-android
+
+
 
 
 
