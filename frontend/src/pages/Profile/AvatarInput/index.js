@@ -20,7 +20,7 @@ export default function AvatarInput() {
         path: 'dataset.file',
       });
     }
-    
+
   }, [ref.current]);
 
   async function handleChange(e) {
@@ -43,7 +43,7 @@ export default function AvatarInput() {
           src={
             preview || 'https://api.adorable.io/avatars/50/abott@adorable.png'
           }
-          alt="profile_photo"
+          alt="Foto do perfil"
         />
         <input
           type="file"

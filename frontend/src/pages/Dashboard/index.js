@@ -2,7 +2,7 @@
 import React, { useState, useMemo, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { format, subMonths, addMonths, parseISO } from 'date-fns';
-import en from 'date-fns/locale/en-US';
+import pt from 'date-fns/locale/pt-BR';
 import {
   MdAddCircleOutline,
   MdChevronLeft,
@@ -22,7 +22,7 @@ export default function Dashboard() {
   const [date, setDate] = useState(new Date());
 
   const dateFormatted = useMemo(
-    () => format(date, 'yyyy MMMM', { locale: en }),
+    () => format(date, 'MMMM yyyy', { locale: pt }),
     [date]
   );
 
@@ -32,7 +32,7 @@ export default function Dashboard() {
       const data = response.data.map(m => ({
         ...m,
         formattedDate: format(parseISO(m.date), "MMMM d', at' hh'h'mm", {
-          locale: en,
+          locale: pt,
         }),
       }));
       setMeetapps(data);
@@ -55,7 +55,7 @@ export default function Dashboard() {
         <strong>Meetapps</strong>
         <button type="button" onClick={() => history.push('/meetapp-new')}>
           <MdAddCircleOutline />
-          New Meetapp
+          Novo Meetapp
         </button>
       </header>
 
@@ -72,10 +72,10 @@ export default function Dashboard() {
                 {!meetapp.canceled_at ? (
                   <strong>{meetapp.title}</strong>
                 ) : (
-                  <span>
-                    <strike>{meetapp.title}</strike>
-                  </span>
-                )}
+                    <span>
+                      <strike>{meetapp.title}</strike>
+                    </span>
+                  )}
                 <time>{meetapp.formattedDate}</time>
                 <MdChevronRight size={24} color="#fff" />
               </Link>
@@ -83,11 +83,11 @@ export default function Dashboard() {
           ))}
         </ul>
       ) : (
-        <NoMeetapps>
-          <MdSentimentDissatisfied color="#fff" size={40} />
-          <span>Oops, no meetapp for this month!</span>
-        </NoMeetapps>
-      )}
+          <NoMeetapps>
+            <MdSentimentDissatisfied color="#fff" size={40} />
+            <span>Ups! Não há meetapp para este mês!</span>
+          </NoMeetapps>
+        )}
       <footer>
         <button type="button" onClick={handlePrevDay}>
           <MdChevronLeft size={36} color="#fff" />

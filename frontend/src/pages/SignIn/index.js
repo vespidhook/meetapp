@@ -33,14 +33,14 @@ export default function SignIn() {
     <>
       <img src={logo} alt="Logo" />
       <Form schema={schema} onSubmit={handleSubmit}>
-        <Input name="email" type="email" placeholder="Your e-mail" />
+        <Input name="email" type="email" placeholder="Seu e-mail" />
         <Input
           name="password"
           type="password"
-          placeholder="your secret password"
+          placeholder="Sua senha"
         />
-        <button type="submit">{loading ? 'Wait...' : 'Login'}</button>
-        <Link to="/register">Create user free</Link>
+        <button type="submit">{loading ? 'Wait...' : 'Entre'}</button>
+        <Link to="/register">Criar nova conta</Link>
       </Form>
     </>
   );

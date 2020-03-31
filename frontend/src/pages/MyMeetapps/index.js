@@ -48,47 +48,47 @@ export default function MyMeetapps() {
           <Loader type="Grid" color="#f94d6a" width={164} height={164} />
         </div>
       ) : (
-        <>
-          <header>
-            <strong>My Meetapps</strong>
-            <button type="button" onClick={() => history.push('/meetapp-new')}>
-              <MdAddCircleOutline />
-              New Meetapp
+          <>
+            <header>
+              <strong>Meus Meetapps</strong>
+              <button type="button" onClick={() => history.push('/meetapp-new')}>
+                <MdAddCircleOutline />
+              Novo Meetapp
             </button>
-          </header>
+            </header>
 
-          {meetapps.length > 0 ? (
-            <ul>
-              {meetapps.map(meetapp => (
-                <MeetappCard
-                  key={String(meetapp.id)}
-                  style={{
-                    opacity: !meetapp.canceled_at && !meetapp.past ? 1 : 0.5,
-                  }}
-                >
-                  <Link to={`meetapp-details/${meetapp.id}`}>
-                    {!meetapp.canceled_at ? (
-                      <strong>{meetapp.title}</strong>
-                    ) : (
-                      <span>
-                        <strike>{meetapp.title}</strike>
-                        <strong>Canceled</strong>
-                      </span>
-                    )}
-                    <time>{meetapp.formattedDate}</time>
-                    <MdChevronRight size={24} color="#fff" />
-                  </Link>
-                </MeetappCard>
-              ))}
-            </ul>
-          ) : (
-            <NoMeetapps>
-              <MdSentimentDissatisfied color="#fff" size={40} />
-              <span>Oops, no meetapp for this month!</span>
-            </NoMeetapps>
-          )}
-        </>
-      )}
+            {meetapps.length > 0 ? (
+              <ul>
+                {meetapps.map(meetapp => (
+                  <MeetappCard
+                    key={String(meetapp.id)}
+                    style={{
+                      opacity: !meetapp.canceled_at && !meetapp.past ? 1 : 0.5,
+                    }}
+                  >
+                    <Link to={`meetapp-details/${meetapp.id}`}>
+                      {!meetapp.canceled_at ? (
+                        <strong>{meetapp.title}</strong>
+                      ) : (
+                          <span>
+                            <strike>{meetapp.title}</strike>
+                            <strong>Canceled</strong>
+                          </span>
+                        )}
+                      <time>{meetapp.formattedDate}</time>
+                      <MdChevronRight size={24} color="#fff" />
+                    </Link>
+                  </MeetappCard>
+                ))}
+              </ul>
+            ) : (
+                <NoMeetapps>
+                  <MdSentimentDissatisfied color="#fff" size={40} />
+                  <span>Ups! Não há meetapp para este mês!</span>
+                </NoMeetapps>
+              )}
+          </>
+        )}
     </Container>
   );
 }

@@ -32,15 +32,15 @@ export default function SignUp() {
     <>
       <img src={logo} alt="Logo" />
       <Form schema={schema} onSubmit={handleSubmit}>
-        <Input name="name" placeholder="Full Name" />
-        <Input name="email" type="email" placeholder="Your e-mail" />
+        <Input name="name" placeholder="Nome completo" />
+        <Input name="email" type="email" placeholder="Seu e-mail" />
         <Input
           name="password"
           type="password"
-          placeholder="Your secret password"
+          placeholder="Sua senha"
         />
-        <button type="submit">Create user</button>
-        <Link to="/">I already have a user</Link>
+        <button type="submit">Criar conta</button>
+        <Link to="/">Já tenho conta</Link>
       </Form>
     </>
   );

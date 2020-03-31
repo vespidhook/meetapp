@@ -14,7 +14,7 @@ class UserController {
     const { id, name, email } = user;
     await Notification.create({
       user: id,
-      content: `Welcome to Meetapp!`,
+      content: `Bem vindo ao Meetapp!`,
     });
 
     return res.status(201).json({
