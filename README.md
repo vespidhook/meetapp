@@ -17,7 +17,7 @@ $ cd desafio-meetapp-rocketseat/backend
 $ yarn
 
 #### Criando container Postgree com o Docker
-$ docker run --name database_meetapp -e POSTGRES_PASSWORD = docker -e POSTGRES_DB = database_meetapp -p 5432: 5432 -d postgres
+$ docker run --name database_meetapp -e POSTGRES_PASSWORD=docker -e POSTGRES_DB=database_meetapp -p 5432:5432 -d postgres
 
 #### Crianda o contêiner Mongo com o Docker
 $ docker run --name mongo_bmstarter -p 27017: 27017 -d -t mongo
