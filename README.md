@@ -7,37 +7,37 @@ Para execução deste projeto você deve ter instalado em seu computador o NodeJ
 
 ## Instalando o backend
 
-#### Clone o repositório
-$ git clone https://github.com/vespidhook/desafio-meetapp-rocketseat.git
-
-#### Vá para o diretorio 
-$ cd desafio-meetapp-rocketseat/backend
-
-#### Instalar dependências
-$ yarn
-
 #### Criando container Postgree com o Docker
 $ docker run --name database_meetapp -e POSTGRES_PASSWORD=docker -e POSTGRES_DB=database_meetapp -p 5432:5432 -d postgres
 
 #### Crianda o contêiner Mongo com o Docker
-$ docker run --name mongo_bmstarter -p 27017: 27017 -d -t mongo
+$ docker run --name mongo_meetapp -p 27017:27017 -d -t mongo
 
 #### Criada Redis com o Docker
-$ docker run --name redismeetapp -p 6379: 6379 -d -t redis: alpino
+$ docker run --name redis_meetapp -p 6379:6379 -d -t redis:alpine
+
+#### Clone o repositório
+$ git clone https://github.com/vespidhook/desafio-meetapp-rocketseat.git
+
+#### Vá para o diretorio 
+$ cd meetapp/backend
+
+#### Instalar dependências
+$ yarn
 
 #### Executar migrates
-$ yarn migrate
-
-#### Executando Seeds
-$ yarn seed
+No backend executar
+$ yarn sequelize db:migrate
 
 #### Executando o backend 
 $ yarn dev
 
+
+
 ## Instalando o frontend
 
 #### Vá para o diretorio 
-$ cd meetapp-gostack/frontend
+$ cd meetapp/frontend
 
 #### Instalar dependências
 $ yarn
@@ -45,10 +45,12 @@ $ yarn
 #### Executando frontend
 $ yarn start
 
+
+
 ## Instalando o mobile (testado somente no android)
 
 #### Vá para o diretorio 
-$ cd meetapp-gostack/mobile
+$ cd meetapp/mobile
 
 #### Instalar dependências
 $ yarn
