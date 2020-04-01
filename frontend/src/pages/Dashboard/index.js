@@ -31,7 +31,7 @@ export default function Dashboard() {
       const response = await api.get('meetapps', { params: { date } });
       const data = response.data.map(m => ({
         ...m,
-        formattedDate: format(parseISO(m.date), "MMMM d', at' hh'h'mm", {
+        formattedDate: format(parseISO(m.date), "d 'de' MMMM ', às' hh'h'mm", {
           locale: pt,
         }),
       }));

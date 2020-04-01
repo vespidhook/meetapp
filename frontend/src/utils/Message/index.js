@@ -5,6 +5,6 @@ export const errorMessage = function errorMessage(e) {
   toast.error(
     !!error && error.data.error
       ? `Ops! ${error.data.error}`
-      : 'An error has occurred, try again'
+      : 'Ocorreu um erro, tente novamente'
   );
 };

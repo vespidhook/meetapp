@@ -2,7 +2,7 @@
 import React, { useState, useEffect, useMemo } from 'react';
 import { useSelector } from 'react-redux';
 import { format, parseISO } from 'date-fns';
-import en from 'date-fns/locale/en-US';
+import pt from 'date-fns/locale/pt-BR';
 import {
   MdEdit,
   MdDeleteForever,
@@ -48,8 +48,8 @@ export default function Meetapp({ match }) {
           ...data,
           formattedSubscribers: data.subscribers.slice(0, showSubs),
           sumSubscribers: data.subscribers.length - showSubs,
-          formattedDate: format(parseISO(data.date), "MMMM dd ', at' H'h'", {
-            locale: en,
+          formattedDate: format(parseISO(data.date), "dd 'de' MMMM  ', às' H'h'", {
+            locale: pt,
           }),
         });
         setSubscribed(data.subscribed);
@@ -98,102 +98,102 @@ export default function Meetapp({ match }) {
           <Loader type="Grid" color="#f94d6a" width={164} height={164} />
         </div>
       ) : (
-        <>
-          <header>
-            <strong>{meetapp.title}</strong>
-            {meetapp.canceled_at && <h2 className="cancel">Canceled</h2>}
-            {meetapp.past && <h2 className="fineshed">Encerrado</h2>}
-            {!meetapp.canceled_at &&
-              !meetapp.past &&
-              userId === meetapp.owner.id && (
-                <div className="btn">
-                  <Button
-                    type="button"
-                    className="btn-blue"
-                    onClick={() => history.push(`/meetapp-edit/${meetapp.id}`)}
-                  >
-                    <MdEdit />
-                    Edit
-                  </Button>
-                  {meetapp.cancelable && (
+          <>
+            <header>
+              <strong>{meetapp.title}</strong>
+              {meetapp.canceled_at && <h2 className="cancel">Canceled</h2>}
+              {meetapp.past && <h2 className="fineshed">Encerrado</h2>}
+              {!meetapp.canceled_at &&
+                !meetapp.past &&
+                userId === meetapp.owner.id && (
+                  <div className="btn">
                     <Button
                       type="button"
-                      className="btn-red"
-                      onClick={handleCancel}
+                      className="btn-blue"
+                      onClick={() => history.push(`/meetapp-edit/${meetapp.id}`)}
                     >
-                      <MdDeleteForever />
-                      Cancel
-                    </Button>
-                  )}
-                </div>
-              )}
-          </header>
-          {meetapp.banner && (
-            <Banner>
-              <img src={meetapp.banner.url} alt="" />
-            </Banner>
-          )}
-          <Content>
-            <div className="description">{meetapp.description}</div>
-            <div>
-              <div className="others-info">
-                <MdInsertInvitation />
-                <span>{meetapp.formattedDate}</span>
-                <MdPlace />
-                <span>{meetapp.location}</span>
-                <span>
-                  By <strong>{meetapp.owner.name}</strong>
-                </span>
-              </div>
-              <div className="subscriber">
-                {!meetapp.canceled_at &&
-                  !meetapp.past &&
-                  (meetapp.owner.id !== userId &&
-                    (!subscribed ? (
+                      <MdEdit />
+                    Edit
+                  </Button>
+                    {meetapp.cancelable && (
                       <Button
-                        className="btn-blue"
-                        onClick={() => handleSubscribe(true)}
                         type="button"
-                      >
-                        Subscribe
-                      </Button>
-                    ) : (
-                      <Button
                         className="btn-red"
-                        onClick={() => handleSubscribe(false)}
-                        type="button"
+                        onClick={handleCancel}
                       >
-                        Unsubscribe
+                        <MdDeleteForever />
+                      Cancel
                       </Button>
-                    )))}
-                <ul>
-                  {meetapp.formattedSubscribers.map(subscriber => (
-                    <li key={String(subscriber.id)}>
-                      <img
-                        src={
-                          subscriber.avatar
-                            ? subscriber.avatar.url
-                            : `https://api.adorable.io/avatars/50/${subscriber.name}`
-                          // : adorable(subscriber.name)
-                        }
-                        alt={subscriber.name}
-                      />
-                      <Tooltip className="subscriber-tooltip">
-                        {subscriber.name}
-                      </Tooltip>
-                    </li>
-                  ))}
-                </ul>
-                <span>
-                  {meetapp.sumSubscribers > 0
-                    ? `+${meetapp.sumSubscribers}`
-                    : ''}
-                </span>
+                    )}
+                  </div>
+                )}
+            </header>
+            {meetapp.banner && (
+              <Banner>
+                <img src={meetapp.banner.url} alt="" />
+              </Banner>
+            )}
+            <Content>
+              <div className="description">{meetapp.description}</div>
+              <div>
+                <div className="others-info">
+                  <MdInsertInvitation />
+                  <span>{meetapp.formattedDate}</span>
+                  <MdPlace />
+                  <span>{meetapp.location}</span>
+                  <span>
+                    por <strong>{meetapp.owner.name}</strong>
+                  </span>
+                </div>
+                <div className="subscriber">
+                  {!meetapp.canceled_at &&
+                    !meetapp.past &&
+                    (meetapp.owner.id !== userId &&
+                      (!subscribed ? (
+                        <Button
+                          className="btn-blue"
+                          onClick={() => handleSubscribe(true)}
+                          type="button"
+                        >
+                          Subscribe
+                        </Button>
+                      ) : (
+                          <Button
+                            className="btn-red"
+                            onClick={() => handleSubscribe(false)}
+                            type="button"
+                          >
+                            Unsubscribe
+                          </Button>
+                        )))}
+                  <ul>
+                    {meetapp.formattedSubscribers.map(subscriber => (
+                      <li key={String(subscriber.id)}>
+                        <img
+                          src={
+                            subscriber.avatar
+                              ? subscriber.avatar.url
+                              : `https://api.adorable.io/avatars/50/${subscriber.name}`
+                            // : adorable(subscriber.name)
+                          }
+                          alt={subscriber.name}
+                        />
+                        <Tooltip className="subscriber-tooltip">
+                          {subscriber.name}
+                        </Tooltip>
+                      </li>
+                    ))}
+                  </ul>
+                  <span>
+                    {meetapp.sumSubscribers > 0
+                      ? `+${meetapp.sumSubscribers}`
+                      : ''}
+                  </span>
+                </div>
               </div>
-            </div>
-          </Content>
-        </>
-      )}
+            </Content>
+          </>
+        )}
     </Container>
   );
 }

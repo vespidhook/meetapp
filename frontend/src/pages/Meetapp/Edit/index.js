@@ -62,20 +62,20 @@ export default function NewMeetapp({ match }) {
           <Loader type="Grid" color="#f94d6a" width={164} height={164} />
         </div>
       ) : (
-        <Form initialData={meetapp} schema={schema} onSubmit={handleSubmit}>
-          <Banner name="banner_id" />
-          <Input name="title" placeholder="Title" />
-          <Input multiline name="description" placeholder="Description" />
-          <SelectDate selected={date} setSelected={setDate} name="date" />
-          <Input name="location" placeholder="Location" />
+          <Form initialData={meetapp} schema={schema} onSubmit={handleSubmit}>
+            <Banner name="banner_id" />
+            <Input name="title" placeholder="Title" />
+            <Input multiline name="description" placeholder="Description" />
+            <SelectDate selected={date} setSelected={setDate} name="date" />
+            <Input name="location" placeholder="Location" />
 
-          <button type="submit">
-            <MdAddCircleOutline size={20} color="#fff" />
-            Edit MeetApp!
+            <button type="submit">
+              <MdAddCircleOutline size={20} color="#fff" />
+            Editar MeetApp!
           </button>
-          <Link to={`/meetapp-details/${meetappId}`}>Back</Link>
-        </Form>
-      )}
+            <Link to={`/meetapp-details/${meetappId}`}>Voltar</Link>
+          </Form>
+        )}
     </Container>
   );
 }

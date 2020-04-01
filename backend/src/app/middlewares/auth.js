@@ -30,8 +30,8 @@ export const authCreateSession = async (req, res, next) => {
       .required('e-mail is a required field'),
     password: Yup.string()
       .required('password is a required field')
-      .min(6, 'Password must be 6-10 characters')
-      .max(10, 'Password must be 6-10 characters'),
+      .min(6, 'A senha deve ter 6-10 characters')
+      .max(10, 'A senha deve ter 6-10 characters'),
   });
 
   try {

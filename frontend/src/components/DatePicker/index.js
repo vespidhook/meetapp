@@ -29,7 +29,7 @@ export default function SelectDate() {
       minDate={new Date()}
       timeFormat="p"
       timeIntervals={30}
-      dateFormat="Pp"
+      dateFormat="pt"
       timeCaption="time"
       date-file={selected}
       minTime={setHours(setMinutes(new Date(), 0), 9)}

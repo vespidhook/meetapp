@@ -13,12 +13,12 @@ import logo from '~/assets/logo.svg';
 /* VALIDATIONS */
 const schema = Yup.object().shape({
   email: Yup.string()
-    .email('E-mail invalid')
-    .required('E-mail is required'),
+    .email('E-mail invalido')
+    .required('E-mail obrigatório'),
   password: Yup.string()
     .min(6)
     .max(15)
-    .required('Password is required'),
+    .required('Senha obrigatória'),
 });
 
 export default function SignIn() {
@@ -39,7 +39,7 @@ export default function SignIn() {
           type="password"
           placeholder="Sua senha"
         />
-        <button type="submit">{loading ? 'Wait...' : 'Entre'}</button>
+        <button type="submit">{loading ? 'Aguarde...' : 'Entre'}</button>
         <Link to="/register">Criar nova conta</Link>
       </Form>
     </>

@@ -1,8 +1,8 @@
 import { format, parseISO } from 'date-fns';
-import us from 'date-fns/locale/en-US';
+import pt from 'date-fns/locale/pt-BR';
 import Mail from '../../lib/Mail';
 
-const formatDate = data => format(data, "MMMM dd', at' H'h'", { locale: us });
+const formatDate = data => format(data, "dd 'de' MMMM', às' H'h'", { locale: pt });
 
 class SubscriptionMail {
   get key() {

@@ -38,16 +38,16 @@ export default function NewMeetapp() {
     <Container>
       <Form schema={schema} onSubmit={handleSubmit}>
         <Banner name="banner_id" />
-        <Input name="title" placeholder="Title" />
-        <Input multiline name="description" placeholder="Description" />
+        <Input name="title" placeholder="Titulo" />
+        <Input multiline name="description" placeholder="Descrição" />
         <SelectDate selected={date} setSelected={setDate} name="date" />
-        <Input name="location" placeholder="Location" />
+        <Input name="location" placeholder="Local" />
 
         <button type="submit">
           <MdAddCircleOutline size={20} color="#fff" />
-          Create MeetApp!
+          Criar MeetApp!
         </button>
-        <Link to="/">Back</Link>
+        <Link to="/">Voltar</Link>
       </Form>
     </Container>
   );

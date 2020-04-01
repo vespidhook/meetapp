@@ -2,14 +2,14 @@ import * as Yup from 'yup';
 
 export const createUser = async (req, res, next) => {
   const schema = Yup.object().shape({
-    name: Yup.string().required('name is a required field'),
+    name: Yup.string().required('Nome é um campo obrigatório'),
     email: Yup.string()
       .email()
-      .required('e-mail is a required field'),
+      .required('E-mail é um campo obrigatório'),
     password: Yup.string()
-      .required('password is a required field')
-      .min(6, 'Password must be 6-10 characters')
-      .max(10, 'Password must be 6-10 characters'),
+      .required('Senha é um campo obrigatório')
+      .min(6, 'A senha deve ter 6-10 characters')
+      .max(10, 'A senha deve ter 6-10 characters'),
   });
 
   try {
@@ -24,22 +24,22 @@ export const updateUser = async (req, res, next) => {
   const schema = Yup.object().shape({
     name: Yup.string(),
     email: Yup.string()
-      .email('E-mail is invalid')
-      .required('e-mail is a required field'),
+      .email('E-mail inválido')
+      .required('E-mail é um campo obrigatório'),
     oldPassword: Yup.string()
-      .min(6, 'Password must be 6-10 characters')
-      .max(10, 'Password must be 6-10 characters'),
+      .min(6, 'A senha deve ter 6-10 characters')
+      .max(10, 'A senha deve ter 6-10 characters'),
     password: Yup.string()
-      .min(6, 'Password must be 6-10 characters')
-      .max(10, 'Password must be 6-10 characters')
-      .when('oldPassword', (oldPassword, field) =>
-        oldPassword ? field.required('You must to send the Password') : field
+      .min(6, 'A senha deve ter 6-10 characters')
+      .max(10, 'A senha deve ter 6-10 characters')
+      .when('Senha Antiga', (oldPassword, field) =>
+        oldPassword ? field.required('Você deve enviar a senha') : field
       ),
     confirmPassword: Yup.string().when('password', (password, field) =>
       password
         ? field
-            .required('You must to confirm the password')
-            .oneOf([Yup.ref('password')])
+          .required('Você deve confirmar a senha')
+          .oneOf([Yup.ref('password')])
         : field
     ),
   });

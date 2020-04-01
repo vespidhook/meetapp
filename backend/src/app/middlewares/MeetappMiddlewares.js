@@ -33,19 +33,19 @@ export const updateUser = async (req, res, next) => {
       .email('E-mail is invalid')
       .required('e-mail is a required field'),
     oldPassword: Yup.string()
-      .min(6, 'Password must be 6-10 characters')
-      .max(10, 'Password must be 6-10 characters'),
+      .min(6, 'A senha deve ter 6-10 characters')
+      .max(10, 'A senha deve ter 6-10 characters'),
     password: Yup.string()
-      .min(6, 'Password must be 6-10 characters')
-      .max(10, 'Password must be 6-10 characters')
+      .min(6, 'A senha deve ter 6-10 characters')
+      .max(10, 'A senha deve ter 6-10 characters')
       .when('oldPassword', (oldPassword, field) =>
         oldPassword ? field.required('You must to send the Password') : field
       ),
     confirmPassword: Yup.string().when('password', (password, field) =>
       password
         ? field
-            .required('You must to confirm the password')
-            .oneOf([Yup.ref('password')])
+          .required('You must to confirm the password')
+          .oneOf([Yup.ref('password')])
         : field
     ),
   });
